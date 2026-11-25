@@ -4,7 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Cara Engineering</title>
-<meta name="theme-color" content="#0D2638">
+<meta name="theme-color" content="#EDF0F3" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0D141A" media="(prefers-color-scheme: dark)">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Cara">
@@ -13,15 +14,19 @@
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <style>
-  html, body { margin: 0; height: 100%; background: #0D141A; }
-  body { box-sizing: border-box; padding-top: env(safe-area-inset-top, 0px); }
+  :root { --top: #EDF0F3; --bottom: #FFFFFF; }
+  @media (prefers-color-scheme: dark) { :root { --top: #0D141A; --bottom: #141E27; } }
+  html, body { margin: 0; height: 100%; overflow: hidden; background: var(--top); }
+  body { box-sizing: border-box; padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
+  .home-bar { position: fixed; left: 0; right: 0; bottom: 0; height: env(safe-area-inset-bottom, 0px); background: var(--bottom); }
   iframe { border: 0; width: 100%; height: 100%; display: block; }
-  .splash { position: fixed; inset: 0; display: grid; place-items: center; background: #0D141A; transition: opacity .4s; }
+  .splash { position: fixed; inset: 0; display: grid; place-items: center; background: #0D141A; transition: opacity .4s; z-index: 2; }
   .splash img { width: 96px; height: 96px; border-radius: 22px; }
   .splash.gone { opacity: 0; pointer-events: none; }
 </style>
 </head>
 <body>
+<div class="home-bar"></div>
 <div class="splash" id="splash"><img src="icon-192.png" alt="Cara"></div>
 <iframe id="app" title="Cara Engineering" allow="camera; clipboard-write"
   src="https://script.google.com/macros/s/AKfycbxYSChH6TyZ--LWcHzxtt811cfel9yj6eTpL8RiUiAUH_zcXW-Z5OOz-y5sX6BKW3q0aQ/exec"></iframe>
